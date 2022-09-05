@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="amasty_product_component"/>
+    <body>
+        <referenceBlock name="product.info.sku" remove="true" />
+        <referenceContainer name="product.info.form.content">
+            <block class="Amasty\RecurringPayments\Block\Product\View\RecurringPayments"
+                   name="product.info.recurring.payments"
+                   before="product.info.addtocart"
+                   template="Amasty_RecurringPayments::product/view/recurring-payments.phtml"/>
+        </referenceContainer>
+        <referenceContainer name="product.info.main">
+        <block class="Magento\Catalog\Block\Product\View\Description" name="product.info.shipment_status" template="product/view/attribute.phtml" after="product.info.type">
+<arguments>
+<argument name="at_call" xsi:type="string">getShipmentStatus</argument>
+<argument name="at_code" xsi:type="string">shipment_status</argument>
+<argument name="css_class" xsi:type="string">shipment_status</argument>
+<argument name="add_attribute" xsi:type="string">itemprop="shipment_status"</argument>
+</arguments>
+</block></referenceContainer>
+    </body>
+</page>
